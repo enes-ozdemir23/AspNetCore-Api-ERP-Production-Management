@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Erp.DataAccessLayer.Abstract
 {
-    public interface IGenericDal<T> where T : class
+    public interface IGenericDal<T,TId> where T : class
     {
         void Add(T entity);
 
@@ -14,7 +14,7 @@ namespace Erp.DataAccessLayer.Abstract
 
         void Update(T entity);
 
-        T GetByID(string code);
+        T GetByID(TId id);
 
         List<T> GetListAll();
     }

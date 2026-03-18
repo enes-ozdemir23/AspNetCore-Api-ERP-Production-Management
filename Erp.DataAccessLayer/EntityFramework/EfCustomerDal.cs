@@ -9,7 +9,7 @@ using Erp.DataAccessLayer.Repositories;
 
 namespace Erp.DataAccessLayer.EntityFramework
 {
-    public class EfCustomerDal : GenericRepository<Customer>, ICustomerDal
+    public class EfCustomerDal : GenericRepository<Customer,string>, ICustomerDal
     {
         public EfCustomerDal(ErpContext context) : base(context)
         {

@@ -8,7 +8,7 @@ using Erp.DataAccessLayer.Concrete.Context;
 
 namespace Erp.DataAccessLayer.Repositories
 {
-    public class GenericRepository<T> : IGenericDal<T> where T : class
+    public class GenericRepository<T,TId> : IGenericDal<T,TId> where T : class
     {
         private readonly ErpContext _context;
 
@@ -29,9 +29,9 @@ namespace Erp.DataAccessLayer.Repositories
             _context.SaveChanges();
         }
 
-        public T GetByID(string code)
+        public T GetByID(TId id)
         {
-            return _context.Set<T>().Find(code);
+            return _context.Set<T>().Find(id);
         }
 
         public List<T> GetListAll()

@@ -28,20 +28,20 @@ namespace ErpApi.Controllers
         public IActionResult AddCustomer(Customer customer)
         {
             _customerService.TAdd(customer);
-            return Ok();
+            return Ok("İşlem Başarılı");
         }
         [HttpDelete]
         public IActionResult DeleteCustomer(string code)
         {
             var values = _customerService.TGetByID(code);
             _customerService.TDelete(values);
-            return Ok();
+            return Ok("İşlem Başarılı");
         }
         [HttpPut]
         public IActionResult UpdateCustomer(Customer customer)
         {
             _customerService.TUpdate(customer);
-            return Ok();
+            return Ok("Güncelleme Başarılı");
         }
 
         [HttpGet("{code}")]

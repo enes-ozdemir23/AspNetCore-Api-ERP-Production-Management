@@ -7,7 +7,7 @@ using Erp.DataAccessLayer.Concrete.Context;
 
 namespace Erp.DataAccessLayer.Abstract
 {
-    public interface ICustomerDal:IGenericDal<Customer>
+    public interface ICustomerDal:IGenericDal<Customer,string>
     {
     }
 }

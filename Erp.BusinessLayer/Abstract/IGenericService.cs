@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Erp.BusinessLayer.Abstract
 {
-    public interface IGenericService<T> where T : class
+    public interface IGenericService<T,TId> where T : class
     {
         void TAdd(T entity);
 
@@ -14,7 +14,7 @@ namespace Erp.BusinessLayer.Abstract
 
         void TUpdate(T entity);
 
-        T TGetByID(string code);
+        T TGetByID(TId id);
 
         List<T> TGetListAll();
     }

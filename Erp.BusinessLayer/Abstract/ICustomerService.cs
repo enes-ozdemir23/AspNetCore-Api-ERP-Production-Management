@@ -7,7 +7,7 @@ using Erp.DataAccessLayer.Concrete.Context;
 
 namespace Erp.BusinessLayer.Abstract
 {
-    public interface ICustomerService:IGenericService<Customer>
+    public interface ICustomerService:IGenericService<Customer, string>
     {
     }
 }
