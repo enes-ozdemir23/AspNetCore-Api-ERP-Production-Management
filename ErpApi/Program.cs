@@ -10,6 +10,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<ICustomerDal, EfCustomerDal>();
 builder.Services.AddScoped<ICustomerService, CustomerManager>();
 
+builder.Services.AddScoped<ICityDal, EfCityDal>();
+builder.Services.AddScoped<ICityService, CityManager>();
+
 builder.Services.AddDbContext<ErpContext>();
 
 // Add services to the container.
