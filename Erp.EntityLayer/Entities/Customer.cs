@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-namespace Erp.DataAccessLayer.Concrete.Context;
+namespace Erp.EntityLayer.Entities;
 
 [Table("TBL_MUSTERIKAYITLARI")]
 public class Customer

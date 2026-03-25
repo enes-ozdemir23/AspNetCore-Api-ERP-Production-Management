@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-
 namespace Erp.EntityLayer.Entities;
 
-[Table("TBL_IL")]
-public class City
+[Table("TBL_ILCE")]
+public class District
 {
     [Key]
     [Column("ID")]
-    public int CityId { get; set; }
+    public int DistrictId { get; set; }
 
     [Column("ISIM")]
-    public string? CityName { get; set; }
+    public string? DistrictName { get; set; }
 
+    [Column("IL_ID")]
+    public int? DistrictCity { get; set; }
 }

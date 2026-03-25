@@ -1,5 +1,5 @@
 ﻿using Erp.BusinessLayer.Abstract;
-using Erp.DataAccessLayer.Concrete.Context;
+using Erp.EntityLayer.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

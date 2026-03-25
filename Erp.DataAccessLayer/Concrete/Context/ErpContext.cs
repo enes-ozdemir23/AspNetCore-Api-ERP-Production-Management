@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using Erp.EntityLayer.Entities;
 
 namespace Erp.DataAccessLayer.Concrete.Context;
 
