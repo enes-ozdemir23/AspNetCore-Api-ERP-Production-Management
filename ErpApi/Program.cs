@@ -13,6 +13,9 @@ builder.Services.AddScoped<ICustomerService, CustomerManager>();
 builder.Services.AddScoped<ICityDal, EfCityDal>();
 builder.Services.AddScoped<ICityService, CityManager>();
 
+builder.Services.AddScoped<IStockDal, EfStockDal>();
+builder.Services.AddScoped<IStockService, StockManager>();
+
 builder.Services.AddDbContext<ErpContext>();
 
 // Add services to the container.

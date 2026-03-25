@@ -14,5 +14,6 @@ public class ErpContext : DbContext
 
     public DbSet<Customer> Customers { get; set; }
     public DbSet<City> Cities { get; set; }
+    public DbSet<Stock> Stocks { get; set; }
 
 }
