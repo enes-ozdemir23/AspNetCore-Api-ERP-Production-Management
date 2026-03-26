@@ -15,7 +15,7 @@ namespace ErpApi.Controllers
         {
             _cityService = cityService;
         }
-        [HttpGet]
+        [HttpGet] 
         public IActionResult CitiesList()
         {
             var values = _cityService.TGetListAll();

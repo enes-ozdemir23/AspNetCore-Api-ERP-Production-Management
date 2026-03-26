@@ -16,6 +16,13 @@ builder.Services.AddScoped<ICityService, CityManager>();
 builder.Services.AddScoped<IStockDal, EfStockDal>();
 builder.Services.AddScoped<IStockService, StockManager>();
 
+builder.Services.AddScoped<IDistrictDal, EfDistrictDal>();
+builder.Services.AddScoped<IDistrictService, DistrictManager>();
+
+builder.Services.AddScoped<IGroupCodeDal, EfGroupCodeDal>();
+builder.Services.AddScoped<IGroupCodeService, GroupCodeManager>();
+
+
 builder.Services.AddDbContext<ErpContext>();
 
 // Add services to the container.
