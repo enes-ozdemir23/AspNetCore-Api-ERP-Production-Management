@@ -17,5 +17,7 @@ public class ErpContext : DbContext
     public DbSet<Stock> Stocks { get; set; }
     public DbSet<District> Districts { get; set; }
     public DbSet<GroupCode> GroupCodes { get; set; }
+    public DbSet<Order> Orders { get; set; }
+    public DbSet<OrderItem> OrderItems { get; set; }
 
 }

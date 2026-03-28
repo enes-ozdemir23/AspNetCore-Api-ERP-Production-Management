@@ -22,6 +22,14 @@ builder.Services.AddScoped<IDistrictService, DistrictManager>();
 builder.Services.AddScoped<IGroupCodeDal, EfGroupCodeDal>();
 builder.Services.AddScoped<IGroupCodeService, GroupCodeManager>();
 
+builder.Services.AddScoped<IOrderDal, EfOrderDal>();
+builder.Services.AddScoped<IOrderService, OrderManager>();
+
+builder.Services.AddScoped<IOrderItemDal, EfOrderItemDal>();
+builder.Services.AddScoped<IOrderItemService, OrderItemManager>();
+
+
+
 
 builder.Services.AddDbContext<ErpContext>();
 
