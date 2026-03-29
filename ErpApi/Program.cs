@@ -31,6 +31,12 @@ builder.Services.AddScoped<IOrderItemService, OrderItemManager>();
 builder.Services.AddScoped<IWorkOrderDal, EfWorkOrderDal>();
 builder.Services.AddScoped<IWorkOrderService, WorkOrderManager>();
 
+builder.Services.AddScoped<IProductionResultDal, EfProductionResultDal>();
+builder.Services.AddScoped<IProductionResultService, ProductionResultManager>();
+
+builder.Services.AddScoped<IStockMovementDal, EfStockMovementDal>();
+builder.Services.AddScoped<IStockMovementService, StockMovementManager>();
+
 
 
 

@@ -20,5 +20,7 @@ public class ErpContext : DbContext
     public DbSet<Order> Orders { get; set; }
     public DbSet<OrderItem> OrderItems { get; set; }
     public DbSet<WorkOrder> WorkOrders { get; set; }
+    public DbSet<ProductionResult> ProductionResults { get; set; }
+    public DbSet<StockMovement> StockMovements { get; set; }
 
 }
