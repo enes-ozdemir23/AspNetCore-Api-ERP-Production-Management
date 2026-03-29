@@ -1,4 +1,6 @@
-﻿using Erp.BusinessLayer.Abstract;
+﻿using AutoMapper;
+using Erp.BusinessLayer.Abstract;
+using Erp.DtoLayer.CityDto;
 using Erp.EntityLayer.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,22 +12,26 @@ namespace ErpApi.Controllers
     public class CitiesController : ControllerBase
     {
         private readonly ICityService _cityService;
+        private readonly IMapper _mapper;
 
-        public CitiesController(ICityService cityService)
+        public CitiesController(ICityService cityService, IMapper mapper)
         {
             _cityService = cityService;
+            _mapper = mapper;
         }
+
         [HttpGet] 
         public IActionResult CitiesList()
         {
-            var values = _cityService.TGetListAll();
+            var values = _mapper.Map<List<ResultCityDto>>(_cityService.TGetListAll());
             return Ok(values);
         }
 
         [HttpPost]
-        public IActionResult AddCities(City city)
+        public IActionResult AddCities(CreateCityDto createCityDto)
         {
-            _cityService.TAdd(city);
+            var value = _mapper.Map<City>(createCityDto);
+            _cityService.TAdd(value);
             return Ok("İşlem Başarılı");
         }
         [HttpDelete]
@@ -36,17 +42,18 @@ namespace ErpApi.Controllers
             return Ok("İşlem Başarılı");
         }
         [HttpPut]
-        public IActionResult UpdateCities(City city)
+        public IActionResult UpdateCities(UpdateCityDto updateCityDto)
         {
-            _cityService.TUpdate(city);
+            var values=_mapper.Map<City>(updateCityDto);
+            _cityService.TUpdate(values);
             return Ok("Güncelleme Başarılı");
         }
 
         [HttpGet("{id}")]
         public IActionResult GetCities(int id)
         {
-            var values = _cityService.TGetByID(id);
-            return Ok(values);
+            var value = _cityService.TGetByID(id);
+            return Ok(_mapper.Map<GetCityDto>(value));
         }
     }
 }

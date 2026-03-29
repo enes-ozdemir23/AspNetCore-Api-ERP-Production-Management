@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Erp.DtoLayer.AboutDto
+namespace Erp.DtoLayer.CityDto
 {
-    public class ResultCustomerDto
+    public class CreateCityDto
     {
+        public string? CityName { get; set; }
 
     }
 }

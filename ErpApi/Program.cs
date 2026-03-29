@@ -1,3 +1,4 @@
+using System.Reflection;
 using Erp.BusinessLayer.Abstract;
 using Erp.BusinessLayer.Concrete;
 using Erp.DataAccessLayer.Abstract;
@@ -6,6 +7,8 @@ using Erp.DataAccessLayer.EntityFramework;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddDbContext<ErpContext>();
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 builder.Services.AddScoped<ICustomerDal, EfCustomerDal>();
 builder.Services.AddScoped<ICustomerService, CustomerManager>();
@@ -40,7 +43,6 @@ builder.Services.AddScoped<IStockMovementService, StockMovementManager>();
 
 
 
-builder.Services.AddDbContext<ErpContext>();
 
 // Add services to the container.
 
