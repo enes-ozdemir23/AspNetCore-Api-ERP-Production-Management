@@ -28,6 +28,9 @@ builder.Services.AddScoped<IOrderService, OrderManager>();
 builder.Services.AddScoped<IOrderItemDal, EfOrderItemDal>();
 builder.Services.AddScoped<IOrderItemService, OrderItemManager>();
 
+builder.Services.AddScoped<IWorkOrderDal, EfWorkOrderDal>();
+builder.Services.AddScoped<IWorkOrderService, WorkOrderManager>();
+
 
 
 

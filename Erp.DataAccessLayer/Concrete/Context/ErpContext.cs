@@ -19,5 +19,6 @@ public class ErpContext : DbContext
     public DbSet<GroupCode> GroupCodes { get; set; }
     public DbSet<Order> Orders { get; set; }
     public DbSet<OrderItem> OrderItems { get; set; }
+    public DbSet<WorkOrder> WorkOrders { get; set; }
 
 }
