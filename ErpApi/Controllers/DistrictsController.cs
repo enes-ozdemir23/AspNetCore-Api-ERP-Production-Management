@@ -1,4 +1,7 @@
-﻿using Erp.BusinessLayer.Abstract;
+﻿using AutoMapper;
+using Erp.BusinessLayer.Abstract;
+using Erp.DtoLayer.CityDto;
+using Erp.DtoLayer.DistrictDto;
 using Erp.EntityLayer.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,22 +13,25 @@ namespace ErpApi.Controllers
     public class DistrictsController : ControllerBase
     {
         private readonly IDistrictService _districtService;
+        private readonly IMapper _mapper;
 
-        public DistrictsController(IDistrictService districtService)
+        public DistrictsController(IDistrictService districtService, IMapper mapper)
         {
             _districtService = districtService;
+            _mapper = mapper;
         }
         [HttpGet]
         public IActionResult DistrictList()
         {
-            var values=_districtService.TGetListAll();
+            var values = _mapper.Map<List<ResultDistrictDto>>(_districtService.TGetListAll());
             return Ok(values);
         }
 
         [HttpPost]
-        public IActionResult AddDistrict(District district)
+        public IActionResult AddDistrict(CreateDistrictDto createDistrictDto)
         {
-            _districtService.TAdd(district);
+            var value = _mapper.Map<District>(createDistrictDto);
+            _districtService.TAdd(value);
             return Ok("İşlem Başarılı");
         }
 
@@ -38,9 +44,10 @@ namespace ErpApi.Controllers
         }
 
         [HttpPut]
-        public IActionResult UpdateDistrict(District district)
+        public IActionResult UpdateDistrict(UpdateDistrictDto updateDistrictDto)
         {
-            _districtService.TUpdate(district);
+            var values = _mapper.Map<District>(updateDistrictDto);
+            _districtService.TUpdate(values);
             return Ok("İşlem Başarılı");
         }
 
@@ -48,7 +55,7 @@ namespace ErpApi.Controllers
         public IActionResult GetDistrict(int id)
         {
             var values = _districtService.TGetByID(id);
-            return Ok(values);
+            return Ok(_mapper.Map<GetDistrictDto>(values));
         }
     }
 }
