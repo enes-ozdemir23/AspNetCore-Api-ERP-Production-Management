@@ -1,4 +1,6 @@
-﻿using Erp.BusinessLayer.Abstract;
+﻿using AutoMapper;
+using Erp.BusinessLayer.Abstract;
+using Erp.DtoLayer.OrderItemDto;
 using Erp.EntityLayer.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,10 +12,11 @@ namespace ErpApi.Controllers
     public class OrderItemsController : ControllerBase
     {
         private readonly IOrderItemService _orderItemService;
-
-        public OrderItemsController(IOrderItemService orderItemService)
+        private readonly IMapper _mapper;
+        public OrderItemsController(IOrderItemService orderItemService, IMapper mapper)
         {
             _orderItemService = orderItemService;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -23,13 +26,14 @@ namespace ErpApi.Controllers
                      OrderByDescending(x => x.OrderItemId)
                     .Take(50)
                     .ToList();
-            return Ok(values);
+            return Ok(_mapper.Map<List<ResultOrderItemDto>>(values));
         }
 
         [HttpPost]
-        public IActionResult AddOrderItem(OrderItem orderItem) 
+        public IActionResult AddOrderItem(CreateOrderItemDto createOrderItemDto) 
         {
-            _orderItemService.TAdd(orderItem);
+            var values=_mapper.Map<OrderItem>(createOrderItemDto);
+            _orderItemService.TAdd(values);
             return Ok("İşlem Başarılı");
 
         }
@@ -43,9 +47,10 @@ namespace ErpApi.Controllers
         }
 
         [HttpPut]
-        public IActionResult UpdateOrderItem(OrderItem orderItem)
+        public IActionResult UpdateOrderItem(UpdateOrderItemDto updateOrderItemDto)
         {
-            _orderItemService.TUpdate(orderItem);
+            var values=_mapper.Map<OrderItem>(updateOrderItemDto);
+            _orderItemService.TUpdate(values);
             return Ok("İşlem Başarılı");
         }
 
@@ -53,7 +58,7 @@ namespace ErpApi.Controllers
         public IActionResult GetOrderItem(int id)
         {
             var values = _orderItemService.TGetByID(id);
-            return Ok(values);
+            return Ok(_mapper.Map<GetOrderItemDto>(values));
         }
     }
 }
