@@ -1,4 +1,6 @@
-﻿using Erp.BusinessLayer.Abstract;
+﻿using AutoMapper;
+using Erp.BusinessLayer.Abstract;
+using Erp.DtoLayer.StockDto;
 using Erp.EntityLayer.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,16 +12,17 @@ namespace ErpApi.Controllers
     public class StocksController : ControllerBase
     {
         private readonly IStockService _stockService;
-
-        public StocksController(IStockService stockService)
+        private readonly IMapper _mapper;
+        public StocksController(IStockService stockService, IMapper mapper)
         {
             _stockService = stockService;
+            _mapper = mapper;
         }
 
         [HttpGet]
         public IActionResult StockList()
         {
-            var values = _stockService.TGetListAll();
+            var values = _mapper.Map<List<ResultStockDto>>(_stockService.TGetListAll());
             return Ok(values);
         }
 
@@ -37,17 +40,18 @@ namespace ErpApi.Controllers
             return Ok("İşlem Başarılı");
         }
         [HttpPut]
-        public IActionResult UpdateStock(Stock stock)
+        public IActionResult UpdateStock(UpdateStockDto updateStockDto)
         {
-            _stockService.TUpdate(stock);
-            return Ok("Güncelleme Başarılı");
+            var values=_mapper.Map<Stock>(updateStockDto);
+            _stockService.TUpdate(values);
+            return Ok("İşlem Başarılı");
         }
 
         [HttpGet("{code}")]
         public IActionResult GetStock(string code)
         {
             var values = _stockService.TGetByID(code);
-            return Ok(values);
+            return Ok(_mapper.Map<GetStockDto>(values));
         }
     }
 }
