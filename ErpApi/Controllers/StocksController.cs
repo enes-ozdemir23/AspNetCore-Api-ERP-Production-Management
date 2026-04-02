@@ -27,9 +27,10 @@ namespace ErpApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddStock(Stock stock)
+        public IActionResult AddStock(CreateStockDto createStockDto)
         {
-            _stockService.TAdd(stock);
+            var values=_mapper.Map<Stock>(createStockDto);
+            _stockService.TAdd(values);
             return Ok("İşlem Başarılı");
         }
         [HttpDelete]

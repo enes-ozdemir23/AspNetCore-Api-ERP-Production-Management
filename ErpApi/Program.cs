@@ -40,7 +40,7 @@ builder.Services.AddScoped<IProductionResultService, ProductionResultManager>();
 builder.Services.AddScoped<IStockMovementDal, EfStockMovementDal>();
 builder.Services.AddScoped<IStockMovementService, StockMovementManager>();
 
-
+builder.Services.AddScoped<ICodeGeneratorService, CodeGeneratorManager>();
 
 
 

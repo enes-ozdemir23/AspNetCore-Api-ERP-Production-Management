@@ -9,5 +9,6 @@ namespace Erp.DataAccessLayer.Abstract
 {
     public interface IOrderDal:IGenericDal<Order,string>
     {
+        string GetLastOrderCode();
     }
 }

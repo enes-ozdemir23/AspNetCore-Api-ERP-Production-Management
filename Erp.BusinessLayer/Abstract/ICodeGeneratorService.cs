@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Erp.EntityLayer.Entities;
 
 namespace Erp.BusinessLayer.Abstract
 {
-    public interface IOrderService:IGenericService<Order,string>
+    public interface ICodeGeneratorService
     {
-        public string GetLastOrderCode();
+        string GenerateSequential(string lastCode, string prefix, int totalLength);
 
     }
 }

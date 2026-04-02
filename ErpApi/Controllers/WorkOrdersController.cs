@@ -1,4 +1,6 @@
-﻿using Erp.BusinessLayer.Abstract;
+﻿using AutoMapper;
+using Erp.BusinessLayer.Abstract;
+using Erp.DtoLayer.WorkOrderDto;
 using Erp.EntityLayer.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpLogging;
@@ -11,23 +13,25 @@ namespace ErpApi.Controllers
     public class WorkOrdersController : ControllerBase
     {
         private readonly IWorkOrderService _workOrderService;
-
-        public WorkOrdersController(IWorkOrderService workOrderService)
+        private readonly IMapper _mapper;
+        public WorkOrdersController(IWorkOrderService workOrderService, IMapper mapper)
         {
             _workOrderService = workOrderService;
+            _mapper = mapper;
         }
 
         [HttpGet]
         public IActionResult WorkOrderList()
         {
-            var values = _workOrderService.TGetListAll();
+            var values = _mapper.Map<List<ResultWorkOrderDto>>(_workOrderService.TGetListAll());
             return Ok(values);
         }
 
         [HttpPost]
-        public IActionResult AddWorkOrder(WorkOrder workOrder)
+        public IActionResult AddWorkOrder(CreateWorkOrderDto createWorkOrderDto)
         {
-            _workOrderService.TAdd(workOrder);
+            var values=_mapper.Map<WorkOrder>(createWorkOrderDto);
+            _workOrderService.TAdd(values);
             return Ok("İşlem Başarılı");
         }
 
@@ -40,9 +44,10 @@ namespace ErpApi.Controllers
         }
 
         [HttpPut]
-        public IActionResult UpdateWorkOrder(WorkOrder workOrder)
+        public IActionResult UpdateWorkOrder(UpdateWorkOrderDto updateWorkOrderDto)
         {
-            _workOrderService.TUpdate(workOrder);
+            var values = _mapper.Map<WorkOrder>(updateWorkOrderDto);
+            _workOrderService.TUpdate(values);
             return Ok("İşlem Başarılı");
         }
 
@@ -50,7 +55,7 @@ namespace ErpApi.Controllers
         public IActionResult GetWorkOrder(String code)
         {
             var values = _workOrderService.TGetByID(code);
-            return Ok(values);
+            return Ok(_mapper.Map<GetWorkOrderDto>(values));
         }
 
     }

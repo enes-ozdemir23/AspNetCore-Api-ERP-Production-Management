@@ -1,4 +1,6 @@
-﻿using Erp.BusinessLayer.Abstract;
+﻿using AutoMapper;
+using Erp.BusinessLayer.Abstract;
+using Erp.DtoLayer.ProductionResultDto;
 using Erp.EntityLayer.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,23 +12,25 @@ namespace ErpApi.Controllers
     public class ProductionResultsController : ControllerBase
     {
         private readonly IProductionResultService _productionResultService;
-
-        public ProductionResultsController(IProductionResultService productionResultService)
+        private readonly IMapper _mapper;
+        public ProductionResultsController(IProductionResultService productionResultService, IMapper mapper)
         {
             _productionResultService = productionResultService;
+            _mapper = mapper;
         }
 
         [HttpGet]
         public IActionResult ProductionResultList()
         {
-            var values = _productionResultService.TGetListAll();
+            var values = _mapper.Map<List<ResultProductionResultDto>>(_productionResultService.TGetListAll());
             return Ok(values);
         }
 
         [HttpPost]
-        public IActionResult AddProductionResult(ProductionResult productionResult)
+        public IActionResult AddProductionResult(CreateProductionResultDto createProductionResultDto)
         {
-            _productionResultService.TAdd(productionResult);
+            var values= _mapper.Map<ProductionResult>(createProductionResultDto);
+            _productionResultService.TAdd(values);
             return Ok("İşlem Başarılı");
         }
 
@@ -39,9 +43,10 @@ namespace ErpApi.Controllers
         }
 
         [HttpPut]
-        public IActionResult UpdateProductionResult(ProductionResult productionResult)
+        public IActionResult UpdateProductionResult(UpdateProductionResultDto updateProductionResultDto)
         {
-            _productionResultService.TUpdate(productionResult);
+            var values=_mapper.Map<ProductionResult>(updateProductionResultDto);
+            _productionResultService.TUpdate(values);
             return Ok("İşlem Başarılı");
         }
 
@@ -49,7 +54,7 @@ namespace ErpApi.Controllers
         public IActionResult GetProductionResult(string code)
         {
             var values = _productionResultService.TGetByID(code);
-            return Ok(values);
+            return Ok(_mapper.Map<GetProductionResultDto>(values));
         }
 
     }

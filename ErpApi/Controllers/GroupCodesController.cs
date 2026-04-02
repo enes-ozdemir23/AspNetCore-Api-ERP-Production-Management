@@ -1,4 +1,6 @@
-﻿using Erp.BusinessLayer.Abstract;
+﻿using AutoMapper;
+using Erp.BusinessLayer.Abstract;
+using Erp.DtoLayer.GroupCodeDto;
 using Erp.EntityLayer.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,23 +12,25 @@ namespace ErpApi.Controllers
     public class GroupCodesController : ControllerBase
     {
         private readonly IGroupCodeService _groupCodeService;
-
-        public GroupCodesController(IGroupCodeService groupCodeService)
+        private readonly IMapper _mapper;
+        public GroupCodesController(IGroupCodeService groupCodeService, IMapper mapper)
         {
             _groupCodeService = groupCodeService;
+            _mapper = mapper;
         }
 
         [HttpGet]
         public IActionResult GroupCodeList()
         {
-            var values=_groupCodeService.TGetListAll();
+            var values=_mapper.Map<List<ResultGroupCodeDto>>(_groupCodeService.TGetListAll());
             return Ok(values);
         }
 
         [HttpPost]
-        public IActionResult AddGroupCode(GroupCode groupCode)
+        public IActionResult AddGroupCode(CreateGroupCodeDto createGroupCodeDto)
         {
-            _groupCodeService.TAdd(groupCode);
+            var values=_mapper.Map<GroupCode>(createGroupCodeDto);
+            _groupCodeService.TAdd(values);
             return Ok("İşlem Başarılı");
         }
 
@@ -39,9 +43,10 @@ namespace ErpApi.Controllers
         }
 
         [HttpPut]
-        public IActionResult UpdateGroupCode(GroupCode groupCode)
+        public IActionResult UpdateGroupCode(UpdateGroupCodeDto updateGroupCodeDto)
         {
-            _groupCodeService.TUpdate(groupCode);
+            var values=_mapper.Map<GroupCode>(updateGroupCodeDto);
+            _groupCodeService.TUpdate(values);
             return Ok("İşlem Başarılı");
         }
 
@@ -49,7 +54,7 @@ namespace ErpApi.Controllers
         public IActionResult GetGroupCode(string code)
         {
             var values=_groupCodeService.TGetByID(code);
-            return Ok(values);
+            return Ok(_mapper.Map<GetGroupCodeDto>(values));
         }
     }
 }
