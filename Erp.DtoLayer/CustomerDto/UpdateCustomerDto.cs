@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Erp.DtoLayer.CustomerDto
 {
-    public class ResultCustomerDto
+    public class UpdateCustomerDto
     {
         public string CustomerCode { get; set; } = null!;
         public string? CustomerName { get; set; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Erp.DtoLayer.CustomerDto
 {
-    public class ResultCustomerDto
+    public class GetCustomerDto
     {
         public string CustomerCode { get; set; } = null!;
         public string? CustomerName { get; set; }
