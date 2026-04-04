@@ -19,7 +19,7 @@ namespace Erp.BusinessLayer.Concrete
             _codegenService = codegenService;
         }
 
-        public string GetLastOrderCode()
+        public string TGetLastOrderCode()
         {
             return _orderDal.GetLastOrderCode();
         }

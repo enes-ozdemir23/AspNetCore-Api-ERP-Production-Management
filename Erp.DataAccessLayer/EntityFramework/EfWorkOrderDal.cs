@@ -15,5 +15,15 @@ namespace Erp.DataAccessLayer.EntityFramework
         public EfWorkOrderDal(ErpContext context) : base(context)
         {
         }
+
+        public string GetLastWorkOrderCode()
+        {
+            var context = new ErpContext();
+            var value = context.WorkOrders
+                        .OrderByDescending(x => x.WorkOrderCode)
+                        .Select(y => y.WorkOrderCode)
+                        .FirstOrDefault();
+            return value;
+        }
     }
 }

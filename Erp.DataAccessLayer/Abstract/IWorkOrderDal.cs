@@ -9,5 +9,7 @@ namespace Erp.DataAccessLayer.Abstract
 {
     public interface IWorkOrderDal:IGenericDal<WorkOrder,string>
     {
+        string GetLastWorkOrderCode();
+
     }
 }

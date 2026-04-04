@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Erp.BusinessLayer.Abstract;
 using Erp.DataAccessLayer.Abstract;
+using Erp.DataAccessLayer.EntityFramework;
 using Erp.EntityLayer.Entities;
 
 namespace Erp.BusinessLayer.Concrete
@@ -12,14 +13,19 @@ namespace Erp.BusinessLayer.Concrete
     public class WorkOrderManager : IWorkOrderService
     {
         private readonly IWorkOrderDal _workOrderDal;
+        private readonly ICodeGeneratorService _codegenService;
 
-        public WorkOrderManager(IWorkOrderDal workOrderDal)
+        public WorkOrderManager(IWorkOrderDal workOrderDal, ICodeGeneratorService codegenService)
         {
             _workOrderDal = workOrderDal;
+            _codegenService = codegenService;
         }
 
         public void TAdd(WorkOrder entity)
         {
+            var lastCode = _workOrderDal.GetLastWorkOrderCode();
+            var newCode = _codegenService.GenerateSequential(lastCode, "I", 10);
+            entity.WorkOrderCode = newCode;
             _workOrderDal.Add(entity);
         }
 
@@ -31,6 +37,11 @@ namespace Erp.BusinessLayer.Concrete
         public WorkOrder TGetByID(string id)
         {
             return _workOrderDal.GetByID(id);
+        }
+
+        public string TGetLastWorkOrderCode()
+        {
+            return _workOrderDal.GetLastWorkOrderCode();
         }
 
         public List<WorkOrder> TGetListAll()

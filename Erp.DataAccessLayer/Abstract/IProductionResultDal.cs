@@ -9,5 +9,7 @@ namespace Erp.DataAccessLayer.Abstract
 {
     public interface IProductionResultDal:IGenericDal<ProductionResult,string>
     {
+        string GetLastProductionResultCode();
+
     }
 }

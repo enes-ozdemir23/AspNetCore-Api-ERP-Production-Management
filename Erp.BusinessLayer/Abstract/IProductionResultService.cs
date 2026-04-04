@@ -9,5 +9,7 @@ namespace Erp.BusinessLayer.Abstract
 {
     public interface IProductionResultService:IGenericService<ProductionResult,string>
     {
+        public string TGetLastProductionResultCode();
+
     }
 }

@@ -9,5 +9,7 @@ namespace Erp.BusinessLayer.Abstract
 {
     public interface IWorkOrderService:IGenericService<WorkOrder,string>
     {
+        public string TGetLastWorkOrderCode();
+
     }
 }

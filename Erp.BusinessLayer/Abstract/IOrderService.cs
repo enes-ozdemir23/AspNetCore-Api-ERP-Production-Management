@@ -9,7 +9,7 @@ namespace Erp.BusinessLayer.Abstract
 {
     public interface IOrderService:IGenericService<Order,string>
     {
-        public string GetLastOrderCode();
+        public string TGetLastOrderCode();
 
     }
 }

@@ -15,5 +15,15 @@ namespace Erp.DataAccessLayer.EntityFramework
         public EfProductionResultDal(ErpContext context) : base(context)
         {
         }
+
+        public string GetLastProductionResultCode()
+        {
+            var context = new ErpContext();
+            var value = context.ProductionResults
+                        .OrderByDescending(x => x.ProductionResultCode)
+                        .Select(y => y.ProductionResultCode)
+                        .FirstOrDefault();
+            return value;
+        }
     }
 }
