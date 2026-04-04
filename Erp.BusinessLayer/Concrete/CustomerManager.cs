@@ -12,14 +12,17 @@ namespace Erp.BusinessLayer.Concrete
     public class CustomerManager : ICustomerService
     {
         private readonly ICustomerDal _customerDal;
-
-        public CustomerManager(ICustomerDal customerDal)
+        private readonly ICodeGeneratorService _codegenService;
+        public CustomerManager(ICustomerDal customerDal, ICodeGeneratorService codegenService)
         {
             _customerDal = customerDal;
+            _codegenService = codegenService;
         }
 
         public void TAdd(Customer entity)
         {
+            var lastCode = _customerDal.GetLastCustomerCode();
+            entity.CustomerCode = _codegenService.GenerateCustomerCode(lastCode,"320.01");
             _customerDal.Add(entity);
         }
 
@@ -31,6 +34,11 @@ namespace Erp.BusinessLayer.Concrete
         public Customer TGetByID(string code)
         {
             return _customerDal.GetByID(code);
+        }
+
+        public string TGetLastCustomerCode()
+        {
+            return _customerDal.GetLastCustomerCode();
         }
 
         public List<Customer> TGetListAll()

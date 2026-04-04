@@ -10,5 +10,10 @@ namespace Erp.BusinessLayer.Abstract
     {
         string GenerateSequential(string lastCode, string prefix, int totalLength);
 
+        string GenerateGroupCode(string lastCode);
+
+        string GenerateCustomerCode(string lastCode, string fixedPart);
+
+
     }
 }

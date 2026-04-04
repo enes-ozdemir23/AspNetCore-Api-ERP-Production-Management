@@ -9,5 +9,7 @@ namespace Erp.BusinessLayer.Abstract
 {
     public interface IGroupCodeService:IGenericService<GroupCode,string>
     {
+        public string TGetLastGroupCode();
+
     }
 }

@@ -12,14 +12,23 @@ namespace Erp.BusinessLayer.Concrete
     public class GroupCodeManager : IGroupCodeService
     {
         private readonly IGroupCodeDal _groupCodeDal;
+        private readonly ICodeGeneratorService _codeGenerator;
 
-        public GroupCodeManager(IGroupCodeDal groupCodeDal)
+        public GroupCodeManager(IGroupCodeDal groupCodeDal, ICodeGeneratorService codeGenerator)
         {
             _groupCodeDal = groupCodeDal;
+            _codeGenerator = codeGenerator;
+        }
+
+        public string TGetLastGroupCode()
+        {
+            return _groupCodeDal.GetLastGroupCode();
         }
 
         public void TAdd(GroupCode entity)
         {
+            var lastCode = _groupCodeDal.GetLastGroupCode();
+            entity.GroupCodeValue = _codeGenerator.GenerateGroupCode(lastCode);
             _groupCodeDal.Add(entity);
         }
 

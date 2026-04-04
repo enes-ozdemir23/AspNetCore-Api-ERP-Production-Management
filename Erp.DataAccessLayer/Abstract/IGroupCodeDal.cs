@@ -9,5 +9,6 @@ namespace Erp.DataAccessLayer.Abstract
 {
     public interface IGroupCodeDal:IGenericDal<GroupCode,string>
     {
+        string GetLastGroupCode();
     }
 }

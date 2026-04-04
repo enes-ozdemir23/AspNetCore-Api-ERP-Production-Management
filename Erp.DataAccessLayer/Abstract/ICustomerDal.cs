@@ -10,5 +10,7 @@ namespace Erp.DataAccessLayer.Abstract
 {
     public interface ICustomerDal:IGenericDal<Customer,string>
     {
+        public string GetLastCustomerCode();
+
     }
 }

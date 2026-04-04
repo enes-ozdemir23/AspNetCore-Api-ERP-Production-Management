@@ -9,6 +9,31 @@ namespace Erp.BusinessLayer.Concrete
 {
     public class CodeGeneratorManager : ICodeGeneratorService
     {
+        public string GenerateCustomerCode(string lastCode, string fixedPart)
+        {
+            if (string.IsNullOrEmpty(lastCode))
+                return fixedPart + ".001";
+
+            var parts = lastCode.Split('.');
+            var lastNumberPart = parts.Last();
+            int number = int.Parse(lastNumberPart);
+            number++;
+            var newNumber = number.ToString().PadLeft(3, '0');
+            return fixedPart + "." + newNumber;
+        }
+
+        public string GenerateGroupCode(string lastCode)
+        {
+            if (string.IsNullOrEmpty(lastCode))
+                return "01";
+
+            int number = int.Parse(lastCode);
+            number++;
+
+            // minimum 2 hane, ama büyüyebilir
+            return number.ToString().PadLeft(2, '0');
+        }
+
         public string GenerateSequential(string lastCode, string prefix, int totalLength)
         {
             // 1️ Eğer hiç kayıt yoksa (ilk kayıt)

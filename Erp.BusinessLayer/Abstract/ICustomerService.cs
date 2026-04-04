@@ -9,5 +9,7 @@ namespace Erp.BusinessLayer.Abstract
 {
     public interface ICustomerService:IGenericService<Customer, string>
     {
+        public string TGetLastCustomerCode();
+
     }
 }

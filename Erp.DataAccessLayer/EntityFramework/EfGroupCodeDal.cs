@@ -7,6 +7,7 @@ using Erp.DataAccessLayer.Abstract;
 using Erp.DataAccessLayer.Concrete.Context;
 using Erp.DataAccessLayer.Repositories;
 using Erp.EntityLayer.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Erp.DataAccessLayer.EntityFramework
 {
@@ -14,6 +15,16 @@ namespace Erp.DataAccessLayer.EntityFramework
     {
         public EfGroupCodeDal(ErpContext context) : base(context)
         {
+        }
+
+        public string GetLastGroupCode()
+        {
+            var context=new ErpContext();
+            var value= context.GroupCodes
+                   .OrderByDescending(x => x.GroupCodeValue)
+                   .Select(y => y.GroupCodeValue)
+                   .FirstOrDefault();
+            return value;
         }
     }
 }
