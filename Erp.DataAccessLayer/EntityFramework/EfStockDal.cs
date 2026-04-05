@@ -7,6 +7,7 @@ using Erp.DataAccessLayer.Abstract;
 using Erp.DataAccessLayer.Concrete.Context;
 using Erp.DataAccessLayer.Repositories;
 using Erp.EntityLayer.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Erp.DataAccessLayer.EntityFramework
 {
@@ -15,6 +16,17 @@ namespace Erp.DataAccessLayer.EntityFramework
         public EfStockDal(ErpContext context) : base(context)
         {
         }
-    
+
+        public string GetLastStockCodeByGroup(string groupCode)
+        {
+            var context=new ErpContext();
+            var values= context.Stocks
+                    .AsNoTracking()
+                    .Where(x => x.GroupCode == groupCode)
+                    .OrderByDescending(y => y.StockCode)
+                    .Select(z => z.StockCode)
+                    .FirstOrDefault();
+            return values;
+        }
     }
 }

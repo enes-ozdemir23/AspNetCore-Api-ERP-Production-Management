@@ -12,14 +12,18 @@ namespace Erp.BusinessLayer.Concrete
     public class StockManager : IStockService
     {
         private readonly IStockDal _stockDal;
-
-        public StockManager(IStockDal stockDal)
+        private readonly ICodeGeneratorService _codegenService;
+        public StockManager(IStockDal stockDal, ICodeGeneratorService codegenService)
         {
             _stockDal = stockDal;
+            _codegenService = codegenService;
         }
 
         public void TAdd(Stock entity)
         {
+            entity.GroupCode = entity.GroupCode.PadLeft(2, '0');
+            var lastCode = _stockDal.GetLastStockCodeByGroup(entity.GroupCode);
+            entity.StockCode = _codegenService.GenerateStockCode(lastCode,entity.GroupCode);
             _stockDal.Add(entity);
         }
 
@@ -31,6 +35,11 @@ namespace Erp.BusinessLayer.Concrete
         public Stock TGetByID(string id)
         {
             return _stockDal.GetByID(id);
+        }
+
+        public string TGetLastStockCodeByGroup(string groupCode)
+        {
+            return _stockDal.GetLastStockCodeByGroup(groupCode);
         }
 
         public List<Stock> TGetListAll()

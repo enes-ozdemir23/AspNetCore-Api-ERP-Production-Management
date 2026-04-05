@@ -59,6 +59,24 @@ namespace Erp.BusinessLayer.Concrete
             // 6️ Prefix ile birleştir
             return prefix + newNumberPart;
         }
+
+        public string GenerateStockCode(string lastCode, string groupCode)
+        {
+            groupCode = groupCode.PadLeft(2, '0');
+
+            string prefix = $"152.{groupCode}";
+
+            if (string.IsNullOrEmpty(lastCode))
+                return prefix + ".001";
+
+            var parts = lastCode.Split('.');
+            var lastNumber = parts.Last();
+
+            int number = int.Parse(lastNumber);
+            number++;
+
+            return prefix + "." + number.ToString().PadLeft(3, '0');
+        }
     }
     }
 

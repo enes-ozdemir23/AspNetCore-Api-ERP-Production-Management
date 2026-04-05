@@ -9,5 +9,7 @@ namespace Erp.BusinessLayer.Abstract
 {
     public interface IStockService:IGenericService<Stock,string>
     {
+        public string TGetLastStockCodeByGroup(string groupCode);
+
     }
 }

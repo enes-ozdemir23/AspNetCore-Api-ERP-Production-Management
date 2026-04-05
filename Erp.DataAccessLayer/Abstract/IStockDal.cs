@@ -9,6 +9,7 @@ namespace Erp.DataAccessLayer.Abstract
 {
     public interface IStockDal:IGenericDal<Stock,string>
     {
+        public string GetLastStockCodeByGroup(string groupCode);
 
     }
 }
