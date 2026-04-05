@@ -86,4 +86,4 @@ dotnet run
 
 **Enes Özdemir**
 📧 ozdemir.enes2323@gmail.com
-🔗 (https://github.com/enes-ozdemir23)
+🔗(https://github.com/enes-ozdemir23)
