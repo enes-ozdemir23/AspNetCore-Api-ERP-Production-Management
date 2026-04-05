@@ -21,13 +21,15 @@ Proje aktif olarak geliştirilmeye devam etmektedir.
 
 ## 📁 Proje Mimarisi
 
+```
+AspNetCore-Api-ERP-Production-Management/
 ├── Erp.EntityLayer/       # Entity modelleri
 ├── Erp.DataAccessLayer/   # Repository, DbContext
 ├── Erp.BusinessLayer/     # İş kuralları, servisler
 ├── Erp.DtoLayer/          # DTO sınıfları
 ├── ErpApi/                # Web API, Controller'lar
 └── ErpWebUI/              # MVC arayüz katmanı
-
+```
 
 ---
 
