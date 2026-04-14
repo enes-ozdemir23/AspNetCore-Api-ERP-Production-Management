@@ -39,7 +39,6 @@ AspNetCore-Api-ERP-Production-Management/
 - ✅ DTO katmanı ve AutoMapper entegrasyonu
 - ✅ Entity Framework Core ile Code First yaklaşımı
 - ✅ RESTful API geliştirildi ve Swagger ile test edildi
-- ✅ İlişkili tablolar ve veritabanı yönetimi
 - ✅ API ve WebUI katmanları birbirinden bağımsız
 - 🔄 Geliştirme devam etmektedir
 
