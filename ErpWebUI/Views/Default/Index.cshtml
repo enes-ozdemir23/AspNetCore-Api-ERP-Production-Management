@@ -1,60 +1,20 @@
 ﻿
 @{
-    Layout = null;
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/UILayout/Index.cshtml";
 }
 
-<!doctype html>
-<html lang="en">
+@await Component.InvokeAsync("_DefaultFeatureComponentPartial")
 
-@await Component.InvokeAsync("_HeadComponentPartial")
+@await Component.InvokeAsync("_ProductComponentPartial")
 
-<body>
+@await Component.InvokeAsync("_WhyChooseUsComponentPartial")
 
-	@await Component.InvokeAsync("_NavbarComponentPartial")
+@await Component.InvokeAsync("_HelpComponentPartial")
 
-	<!-- Start Hero Section -->
+@await Component.InvokeAsync("_PopularProductComponentPartial")
 
-		@await Component.InvokeAsync("_FeatureComponentPartial")
+@await Component.InvokeAsync("_TestimonialComponentPartial")
 
-	<!-- End Hero Section -->
-
-	<!-- Start Product Section -->
-	@await Component.InvokeAsync("_ProductComponentPartial")
-
-	<!-- End Product Section -->
-
-	<!-- Start Why Choose Us Section -->
-	@await Component.InvokeAsync("_WhyChooseUsComponentPartial")
-
-	<!-- End Why Choose Us Section -->
-
-	<!-- Start We Help Section -->
-	@await Component.InvokeAsync("_HelpComponentPartial")
-
-	<!-- End We Help Section -->
-
-	<!-- Start Popular Product -->
-	@await Component.InvokeAsync("_PopularProductComponentPartial")
-
-	<!-- End Popular Product -->
-	<!-- Start Testimonial Slider -->
-	@await Component.InvokeAsync("_TestimonialComponentPartial")
-
-	<!-- End Testimonial Slider -->
-	<!-- Start Blog Section -->
-	@await Component.InvokeAsync("_BestSellingProductsComponentPartial")
-
-	<!-- End Blog Section -->
-	<!-- Start Footer Section -->
-
-	@await Component.InvokeAsync("_FooterComponentPartial")
-
-	<!-- End Footer Section -->
-
-	@await Component.InvokeAsync("_ScriptComponentPartial")
-
-
-</body>
-
-</html>
+@await Component.InvokeAsync("_BestSellingProductsComponentPartial")
 

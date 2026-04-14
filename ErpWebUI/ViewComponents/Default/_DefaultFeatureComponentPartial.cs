@@ -2,7 +2,7 @@
 
 namespace ErpWebUI.ViewComponents.Default
 {
-    public class _FeatureComponentPartial:ViewComponent
+    public class _DefaultFeatureComponentPartial:ViewComponent
     {
         public IViewComponentResult Invoke()
         {
