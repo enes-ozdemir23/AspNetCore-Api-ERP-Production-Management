@@ -11,5 +11,7 @@ namespace Erp.DataAccessLayer.Abstract
     {
         public string GetLastStockCodeByGroup(string groupCode);
 
+        List<Stock> GetStocksByGroupCode(string groupCode);
+
     }
 }

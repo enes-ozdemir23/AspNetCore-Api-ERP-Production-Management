@@ -11,5 +11,8 @@ namespace Erp.BusinessLayer.Abstract
     {
         public string TGetLastStockCodeByGroup(string groupCode);
 
+        List<Stock> TGetStocksByGroupCode(string groupCode);
+
+
     }
 }

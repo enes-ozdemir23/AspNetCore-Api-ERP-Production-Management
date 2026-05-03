@@ -54,5 +54,13 @@ namespace ErpApi.Controllers
             var values = _stockService.TGetByID(code);
             return Ok(_mapper.Map<GetStockDto>(values));
         }
+
+        [HttpGet("GetStocksByGroupCode/{code}")]
+        public IActionResult GetStocksByGroupCode(string code)
+        {
+            var values = _mapper.Map<List<ResultStockDto>>(_stockService.TGetStocksByGroupCode(code));
+            return Ok(values);
+        }
+
     }
 }

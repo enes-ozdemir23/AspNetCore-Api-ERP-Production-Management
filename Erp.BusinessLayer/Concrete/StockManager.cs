@@ -47,6 +47,11 @@ namespace Erp.BusinessLayer.Concrete
             return _stockDal.GetListAll();
         }
 
+        public List<Stock> TGetStocksByGroupCode(string groupCode)
+        {
+            return _stockDal.GetStocksByGroupCode(groupCode);
+        }
+
         public void TUpdate(Stock entity)
         {
             _stockDal.Update(entity);

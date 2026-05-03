@@ -28,5 +28,14 @@ namespace Erp.DataAccessLayer.EntityFramework
                     .FirstOrDefault();
             return values;
         }
+
+        public List<Stock> GetStocksByGroupCode(string groupCode)
+        {
+            var context = new ErpContext();
+            var values= context.Stocks
+                .Where(x=>x.GroupCode==groupCode)
+                .ToList();
+            return values;
+        }
     }
 }
