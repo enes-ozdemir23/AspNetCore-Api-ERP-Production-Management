@@ -32,3 +32,4 @@ namespace ErpWebUI.Controllers
         }
     }
 }
+// consume işleminde id parametresi yerine code sözcüğü kullanıldığı için program null-exception hatası veriyordu
