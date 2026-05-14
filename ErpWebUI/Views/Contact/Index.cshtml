@@ -1,4 +1,14 @@
-﻿
+﻿@model CreateContactDto
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/UILayout/Index.cshtml";
@@ -57,34 +67,34 @@
                         </div>
                     </div>
 
-                    <form>
+                    <form method="post">
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
                                     <label class="text-black" for="fname">Adınız</label>
-                                    <input type="text" class="form-control" id="fname">
+                                    <input type="text" class="form-control" id="Name" asp-for="Name">
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
                                     <label class="text-black" for="lname">Soyadınız</label>
-                                    <input type="text" class="form-control" id="lname">
+                                    <input type="text" class="form-control" id="Surname" asp-for="Surname">
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="text-black" for="email">Mail Adresiniz</label>
-                            <input type="email" class="form-control" id="email">
+                            <input type="email" class="form-control" id="Mail" asp-for="Mail">
                         </div>
 
                         <div class="form-group">
                             <label class="text-black" for="title">Mesaj Başlığı</label>
-                            <input type="text" class="form-control" id="title">
+                            <input type="text" class="form-control" id="title" asp-for="Title">
                         </div>
                        
                         <div class="form-group mb-5">
                             <label class="text-black" for="message">Mesajınız</label>
-                            <textarea name="" class="form-control" id="message" cols="30" rows="5"></textarea>
+                            <textarea class="form-control" id="message" asp-for="Description" cols="30" rows="5"></textarea>
                         </div>
 
                         <button type="submit" class="btn btn-primary-hover-outline">Mesajı Gönder</button>
