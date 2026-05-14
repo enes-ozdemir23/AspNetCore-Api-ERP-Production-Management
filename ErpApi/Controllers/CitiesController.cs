@@ -18,7 +18,7 @@ namespace ErpApi.Controllers
         {
             _cityService = cityService;
             _mapper = mapper;
-        }
+        } 
 
         [HttpGet] 
         public IActionResult CitiesList()
