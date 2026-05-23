@@ -43,6 +43,10 @@ builder.Services.AddScoped<IStockMovementService, StockMovementManager>();
 builder.Services.AddScoped<IContactDal, EfContactDal>();
 builder.Services.AddScoped<IContactService, ContactManager>();
 
+builder.Services.AddScoped<IAboutDal, EfAboutDal>();
+builder.Services.AddScoped<IAboutService, AboutManager>();
+
+
 builder.Services.AddScoped<ICodeGeneratorService, CodeGeneratorManager>();
 
 
