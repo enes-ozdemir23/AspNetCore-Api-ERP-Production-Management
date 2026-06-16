@@ -1,4 +1,4 @@
-﻿
+﻿@model ResultAboutDto
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/UILayout/Index.cshtml";
@@ -10,8 +10,8 @@
 	<div class="container">
 		<div class="row justify-content-between align-items-center">
 			<div class="col-lg-6">
-				<h2 class="section-title">Why Choose Us</h2>
-				<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.</p>
+				<h2 class="section-title">Neden Bizi Seçmelisiniz?</h2>
+				<p>Kaliteli mobilyalarımız ve müşteri memnuniyetine verdiğimiz önemle fark yaratıyoruz. Evinizi hayalinizdeki mekâna dönüştürmek için buradayız.</p>
 
 				<div class="row my-5">
 					<div class="col-6 col-md-6">
@@ -19,8 +19,8 @@
 							<div class="icon">
 								<img src="/furni-1.0.0/images/truck.svg" alt="Image" class="imf-fluid">
 							</div>
-							<h3>Fast &amp; Free Shipping</h3>
-							<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+							<h3>@Model.Title1</h3>
+							<p>@Model.Description1</p>
 						</div>
 					</div>
 
@@ -29,8 +29,8 @@
 							<div class="icon">
 								<img src="/furni-1.0.0/images/bag.svg" alt="Image" class="imf-fluid">
 							</div>
-							<h3>Easy to Shop</h3>
-							<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+							<h3>@Model.Title2</h3>
+							<p>@Model.Description2</p>
 						</div>
 					</div>
 
@@ -39,8 +39,8 @@
 							<div class="icon">
 								<img src="/furni-1.0.0/images/support.svg" alt="Image" class="imf-fluid">
 							</div>
-							<h3>24/7 Support</h3>
-							<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+							<h3>@Model.Title3</h3>
+							<p>@Model.Description3</p>
 						</div>
 					</div>
 
@@ -49,8 +49,8 @@
 							<div class="icon">
 								<img src="/furni-1.0.0/images/return.svg" alt="Image" class="imf-fluid">
 							</div>
-							<h3>Hassle Free Returns</h3>
-							<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+							<h3>@Model.Title4</h3>
+							<p>@Model.Description4</p>
 						</div>
 					</div>
 
