@@ -46,6 +46,9 @@ builder.Services.AddScoped<IContactService, ContactManager>();
 builder.Services.AddScoped<IAboutDal, EfAboutDal>();
 builder.Services.AddScoped<IAboutService, AboutManager>();
 
+builder.Services.AddScoped<IOurTeamDal, EfOurTeamDal>();
+builder.Services.AddScoped<IOurTeamService, OurTeamManager>();
+
 
 builder.Services.AddScoped<ICodeGeneratorService, CodeGeneratorManager>();
 
